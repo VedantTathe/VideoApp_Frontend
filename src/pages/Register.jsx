@@ -31,12 +31,13 @@ export default function Register() {
   return (
     <div className="flex justify-center items-center h-screen bg-gradient-to-r from-gray-700 via-gray-900 to-black">
       <div className="bg-gray-800 text-white p-8 rounded-lg shadow-lg max-w-sm w-full">
+      <h5 class="text-center p-3 text-red-500 font-bold text-xl">This Website is only for Vedant <br/>Others plz dont create account</h5>
         <h2 className="text-3xl font-bold mb-4 text-center text-green-400">Register</h2>
 
         {error && <p className="text-red-500 text-center mb-2">{error}</p>}
         {success && <p className="text-green-500 text-center mb-2">{success}</p>}
 
-        <form onSubmit={handleRegister}>
+        <form>
           <input
             type="text"
             placeholder="Username"
@@ -62,7 +63,6 @@ export default function Register() {
             required
           />
           <button
-            type="submit"
             className="w-full p-3 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400"
           >
             Register
