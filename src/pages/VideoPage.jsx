@@ -5,12 +5,14 @@ import axios from "axios";
 function VideoPage() {
   const { videoid } = useParams();
   const [videoUrl, setVideoUrl] = useState("");
+  const [websiteUrl, setWebsiteUrl] = useState("");
 
   useEffect(() => {
     const fetchVideoUrl = async () => {
       try {
         const response = await axios.get(`https://adaptable-delight-production.up.railway.app/api/videos/${videoid}`);
         setVideoUrl(convertToEmbedUrl(response.data.videoUrl));
+        setWebsiteUrl(response.data.websiteUrl);
       } catch (error) {
         console.error("Error fetching video:", error);
       }
@@ -25,9 +27,17 @@ function VideoPage() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-900 text-white">
-      <div className="w-full max-w-3xl text-center">
-        <h2 className="text-2xl font-bold mb-4">YouTube Video Player</h2>
+    <div className="flex justify-center items-center bg-gray-900 text-white">
+      <div className="w-full max-w-3xl text-center ">
+        <h2 className="text-2xl font-bold my-4">YouTube Video Player</h2>
+        
+        <div className="text-left my-5">
+          
+        <h5><span className="text-lg font-bold ">Portfolio Website: </span><a className="text-blue-500" href="https://vedanttathe.netlify.app" target="_blank">https://vedanttathe.netlify.app</a></h5>
+        
+        {websiteUrl ? (<h5><span className="text-lg font-bold ">Hosted Website Link: </span><a className="text-blue-500" href={websiteUrl} target="_blank">{websiteUrl}</a></h5>):(<p></p> )}
+        
+        </div>
 
         {videoUrl ? (
           <iframe
