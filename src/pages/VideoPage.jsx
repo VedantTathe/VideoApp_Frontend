@@ -6,6 +6,7 @@ function VideoPage() {
   const { videoid } = useParams();
   const [videoUrl, setVideoUrl] = useState("");
   const [websiteUrl, setWebsiteUrl] = useState("");
+  const [githubUrl, setGithubUrl] = useState("");
 
   useEffect(() => {
     const fetchVideoUrl = async () => {
@@ -13,6 +14,7 @@ function VideoPage() {
         const response = await axios.get(`https://adaptable-delight-production.up.railway.app/api/videos/${videoid}`);
         setVideoUrl(convertToEmbedUrl(response.data.videoUrl));
         setWebsiteUrl(response.data.websiteUrl);
+        setGithubUrl(response.data.githubUrl);
       } catch (error) {
         console.error("Error fetching video:", error);
       }
@@ -37,6 +39,8 @@ function VideoPage() {
         
         {websiteUrl ? (<h5><span className="text-lg font-bold ">Hosted Website Link: </span><a className="text-blue-500" href={websiteUrl} target="_blank">{websiteUrl}</a></h5>):(<p></p> )}
         
+        {githubUrl ? (<h5><span className="text-lg font-bold ">Github Link: </span><a className="text-blue-500" href={githubUrl} target="_blank">{githubUrl}</a></h5>):
+        (<h5><span className="text-lg font-bold ">Github Link for SolanaTokenHub: </span><a className="text-blue-500" href="https://github.com/VedantTathe/SolanaTokenHub" target="_blank">https://github.com/VedantTathe/SolanaTokenHub</a></h5>)}
         </div>
 
         {videoUrl ? (

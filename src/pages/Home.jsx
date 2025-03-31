@@ -7,6 +7,7 @@ export default function Home() {
   const [videoName, setVideoName] = useState("");
   const [videoLink, setVideoLink] = useState("");
   const [websiteLink, setWebsiteLink] = useState("");
+  const [githublink, setGithubLink] = useState("");
   const [videoLinks, setVideoLinks] = useState([]);
   const [editingVideo, setEditingVideo] = useState(null);
 
@@ -39,6 +40,7 @@ export default function Home() {
         videoname: videoName,
         link: videoLink,
         websitelink: websiteLink,
+        githublink: githublink,
       };
 
       if (editingVideo) {
@@ -52,6 +54,7 @@ export default function Home() {
       setVideoName("");
       setVideoLink("");
       setWebsiteLink("");
+      setGithubLink("");
       window.location.reload(); // Refresh to update the list
     } catch (error) {
       console.error("Error saving video:", error);
@@ -73,6 +76,7 @@ export default function Home() {
     setVideoName(video.videoname);
     setVideoLink(video.link);
     setWebsiteLink(video.websitelink);
+    setGithubLink(video.githublink);
   };
 
   const handleCopy = (id) => {
@@ -114,6 +118,13 @@ export default function Home() {
           onChange={(e) => setWebsiteLink(e.target.value)}
           className="w-full p-3 border border-gray-600 rounded-md mb-3 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-green-500"
         />
+        <input
+          type="text"
+          placeholder="Paste Project Github Link Here"
+          value={githublink}
+          onChange={(e) => setGithubLink(e.target.value)}
+          className="w-full p-3 border border-gray-600 rounded-md mb-3 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-green-500"
+        />
         <button type="submit" className="w-full p-3 bg-green-500 text-white font-semibold rounded-md hover:bg-green-600 transition">
           {editingVideo ? "Update Video" : "Submit Video"}
         </button>
@@ -131,6 +142,7 @@ export default function Home() {
                   <p className="text-lg font-medium text-gray-100">{video.videoname}</p>
                   <p className="text-sm text-gray-400">{video.link}</p>
                   <p className="text-sm text-gray-400">{video.websitelink}</p>
+                  <p className="text-sm text-gray-400">{video.githublink}</p>
                 </div>
                 <div className="flex space-x-2">
                   <button className="p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition" onClick={() => handleView(video.id)}>
