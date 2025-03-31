@@ -11,7 +11,7 @@ function VideoPage() {
   useEffect(() => {
     const fetchVideoUrl = async () => {
       try {
-        const response = await axios.get(`https://adaptable-delight-production.up.railway.app/api/videos/${videoid}`);
+        const response = await axios.get(`https://videoapp-production-e517.up.railway.app/api/videos/${videoid}`);
         setVideoUrl(convertToEmbedUrl(response.data.videoUrl));
         setWebsiteUrl(response.data.websiteUrl);
         setGithubUrl(response.data.githubUrl);

@@ -22,7 +22,7 @@ export default function Home() {
 
     const fetchVideos = async () => {
       try {
-        const response = await axios.get("https://adaptable-delight-production.up.railway.app/api/videos");
+        const response = await axios.get("https://videoapp-production-e517.up.railway.app/api/videos");
         setVideoLinks(response.data);
       } catch (error) {
         console.error("Error fetching videos:", error);
@@ -45,10 +45,10 @@ export default function Home() {
 
       if (editingVideo) {
         videoData.id = editingVideo.id;
-        await axios.post("https://adaptable-delight-production.up.railway.app/api/videos", videoData);
+        await axios.post("https://videoapp-production-e517.up.railway.app/api/videos", videoData);
         setEditingVideo(null);
       } else {
-        await axios.post("https://adaptable-delight-production.up.railway.app/api/videos", videoData);
+        await axios.post("https://videoapp-production-e517.up.railway.app/api/videos", videoData);
       }
 
       setVideoName("");
@@ -64,7 +64,7 @@ export default function Home() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://adaptable-delight-production.up.railway.app/api/videos/${id}`);
+      await axios.delete(`https://videoapp-production-e517.up.railway.app/api/videos/${id}`);
       setVideoLinks(videoLinks.filter((video) => video.id !== id));
     } catch (error) {
       console.error("Error deleting video:", error);

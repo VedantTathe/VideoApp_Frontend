@@ -14,7 +14,7 @@ export default function Register() {
     setSuccess("");
 
     try {
-      const response = await axios.post("https://adaptable-delight-production.up.railway.app/api/users", {
+      const response = await axios.post("https://videoapp-production-e517.up.railway.app/api/users", {
         username,
         email,
         password,

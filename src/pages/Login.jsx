@@ -17,7 +17,7 @@ export default function Login() {
     setSuccess("");
 
     try {
-      const response = await axios.post("https://adaptable-delight-production.up.railway.app/api/users/auth/login", {
+      const response = await axios.post("https://videoapp-production-e517.up.railway.app/api/users/auth/login", {
         email,
         password,
       });
